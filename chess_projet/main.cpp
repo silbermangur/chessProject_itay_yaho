@@ -1,25 +1,62 @@
 #include <iostream>
-
+#include "board.h"
+#include "rook.h"
+#include "bishop.h"
+#include "queen.h"
+#include "king.h"
 
 #define	STARTING_BOARD "rnbkqbnrpppppppp################################PPPPPPPPRNBKQBNR1"
-#define SIZE 8
 
 using namespace std;
 
+int findIndex(int& x, int& y)
+{
+	x -= 1;
+	y = SIZE - y;
+	return y * SIZE + x;
+}
+
 int main()
 {
-	int index = 0;
-	cout << STARTING_BOARD << endl;
+	// string boardArray[SIZE][SIZE] = { "rnbkqbnr", "pppppppp", "########", "########", "########", "########", "PPPPPPPP", "RNBKQBNR",1 };
+	string boardString = STARTING_BOARD; 
+	board b;
+	b.setBoard(boardString);  
+	b.printBoard(); 
+	cout << endl;
 
-	for (int line = 0; line < SIZE; line++)
+	int x = 8;
+	int y = 7;
+	int i = findIndex(x, y);
+	/*
+	boardString[i] = '+';
+	b.setBoard(boardString);
+	b.printBoard();
+	*/
+
+	int a[4] = {3,3,4,4};
+
+	//rook r(true);
+	//r.move(a);
+
+	//bishop b2(true);
+	//b2.move(a);
+
+	//queen q(true);
+
+	king k(true);
+	int* arr = k.move(a);
+
+	for (int i = 0; i < SIZE; i++)
 	{
-		for (int i = 0;i < SIZE; i++)
+		if (arr != NULL  &&  arr[i] != -1)
 		{
-			cout << STARTING_BOARD[index] << " ";
-			index++;
+			boardString[arr[i]] = '+';
 		}
-		cout << endl;
-	}
+	}	
+
+	b.setBoard(boardString);
+	b.printBoard();
 	
 	return 0;
 }

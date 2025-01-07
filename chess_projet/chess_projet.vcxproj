@@ -137,6 +137,7 @@
     <ClCompile Include="rook.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Pipe.h" />
     <ClInclude Include="bishop.h" />
     <ClInclude Include="board.h" />
     <ClInclude Include="king.h" />
