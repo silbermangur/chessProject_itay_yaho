@@ -31,7 +31,6 @@ int* rook::move(int* position)
 				{
 					path[i] = SIZE * (position[0] + (i * postiveMult)) + position[1];
 				}
-				cout << path[i] << endl;
 			}
 	}
 	// if not - return  error

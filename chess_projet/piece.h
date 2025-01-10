@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <math.h>
 
 #define SIZE 8
 
@@ -9,7 +10,9 @@ class piece
 {
 public:
 	piece(bool color);
-	
+	bool getColor();
+	bool getHasMoved();
+	void setHasMoved();
 	virtual int* move(int* position)  = 0; 
 
 private:

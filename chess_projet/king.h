@@ -1,7 +1,7 @@
 #pragma once
 #include "queen.h"
 
-class king : queen
+class king : public queen
 {
 public:
 	king(bool color);

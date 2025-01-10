@@ -4,6 +4,8 @@
 #include "bishop.h"
 #include "queen.h"
 #include "king.h"
+#include "pawn.h"
+#include "knight.h"
 
 #define	STARTING_BOARD "rnbkqbnrpppppppp################################PPPPPPPPRNBKQBNR1"
 
@@ -23,40 +25,56 @@ int main()
 	board b;
 	b.setBoard(boardString);  
 	b.printBoard(); 
-	cout << endl;
-
+	
 	int x = 8;
 	int y = 7;
-	int i = findIndex(x, y);
+	int f = findIndex(x, y);
 	/*
 	boardString[i] = '+';
 	b.setBoard(boardString);
 	b.printBoard();
 	*/
 
-	int a[4] = {3,3,4,4};
+	int a[4] = {7,7,0,7};
 
-	//rook r(true);
-	//r.move(a);
+	rook r(true);
+	
 
 	//bishop b2(true);
-	//b2.move(a);
 
 	//queen q(true);
 
-	king k(true);
-	int* arr = k.move(a);
+	//king k(true);
 
+	//pawn p(false);
+
+	//knight n(true);
+	int* arr = r.move(a);
+	
+
+	int i = 0;
+	for (i = 0;i < SIZE;i++) 
+	{
+		if (!(arr[i] >= 0 && arr[i] <= 64))
+		{
+			break;
+		}
+	}
+	i -= 1;
+	boardString[arr[i]] = boardString[arr[0]];
+	boardString[arr[0]] = '#';
+	/*
 	for (int i = 0; i < SIZE; i++)
 	{
-		if (arr != NULL  &&  arr[i] != -1)
+		if (arr != NULL  &&  arr[i] >= 0 && arr[i] <= 64)
 		{
 			boardString[arr[i]] = '+';
 		}
 	}	
-
+	*/
 	b.setBoard(boardString);
 	b.printBoard();
 	
+
 	return 0;
 }

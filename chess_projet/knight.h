@@ -1,9 +1,9 @@
 #pragma once
 #include "piece.h"
 
-class bishop : public piece
+class knight : public piece
 {
 public:
-	bishop(bool color);
+	knight(bool color);
 	int* move(int* position) override;
 };

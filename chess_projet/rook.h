@@ -2,7 +2,7 @@
 #include "piece.h"
 
 
-class rook : piece
+class rook : public piece
 {
 public:
 	rook(bool color);
