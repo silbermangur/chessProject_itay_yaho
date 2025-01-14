@@ -64,6 +64,11 @@ void board::setBoard(string board)
 	_board = board; 
 }
 
+piece* board::getPiece(int index)
+{
+	return _boardArray[index];
+}
+
 bool board::getTurn()
 {
 	return _board[64];
@@ -86,10 +91,11 @@ bool board::isCheck()
 	return false;
 }
 
-string board::playMove()
+void board::playMove(int src, int dest)
 {
-
-	return _board;
+	_boardArray[dest] = _boardArray[src];
+	_boardArray[src] = nullptr;
+	
 }
 
 bool board::getMove()

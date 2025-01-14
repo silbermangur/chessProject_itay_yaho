@@ -1,6 +1,6 @@
 ﻿#include "pawn.h"
 
-pawn::pawn(bool color) : piece(color)
+pawn::pawn(bool color) : piece(color, "pawn")
 {
 }
 

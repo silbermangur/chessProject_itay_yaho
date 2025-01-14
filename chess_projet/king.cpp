@@ -1,6 +1,6 @@
 #include "king.h"
 
-king::king(bool color) : queen(color)
+king::king(bool color) : queen(color, true)
 {
 }
 

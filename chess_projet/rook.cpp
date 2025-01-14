@@ -2,9 +2,9 @@
 #include <iostream>
 #include <math.h>
 
-rook::rook(bool color) : piece(color)
+rook::rook(bool color) : piece(color, "rook")
 {
-
+	
 }
 
 int* rook::move(int* position)
@@ -33,8 +33,12 @@ int* rook::move(int* position)
 				}
 			}
 	}
-	// if not - return  error
-
+	else
+	{
+		// if not - return  error
+		cout << "Error!" << endl;
+	}
+	
 
 	return path;
 }

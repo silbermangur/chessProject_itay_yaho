@@ -9,14 +9,15 @@ using namespace std;
 class piece
 {
 public:
-	piece(bool color);
+	piece(bool color, string type);
+	string getType();
 	bool getColor();
 	bool getHasMoved();
 	void setHasMoved();
 	virtual int* move(int* position)  = 0; 
 
 private:
-	// string _position;
+	string _type;
 	bool _color;
 	bool _hasMoved;
 };

@@ -1,8 +1,13 @@
 #include "piece.h"
 #include <iostream>
 
-piece::piece(bool color) : _color(color), _hasMoved(false)
-{                // Color - true = white, false = black
+piece::piece(bool color, string type) : _color(color), _hasMoved(false), _type(type)
+{                // Color -> true = white, false = black
+}
+
+string piece::getType()
+{
+    return this->_type;
 }
 
 bool piece::getColor()

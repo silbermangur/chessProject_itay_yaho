@@ -2,7 +2,7 @@
 #include <iostream>
 #include <math.h>
 
-bishop::bishop(bool color) : piece(color)
+bishop::bishop(bool color) : piece(color, "bishop")
 {
 
 }
@@ -30,7 +30,6 @@ int* bishop::move(int* position)
 		for (int i = 0; i <= abs(position[0] - position[2]); i++)
 		{
 			path[i] = position[0] + position[1] * SIZE + step * i;
-			cout << path[i] << endl;
 		}
 	}
 

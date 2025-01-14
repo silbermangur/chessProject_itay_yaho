@@ -1,9 +1,13 @@
 #include "queen.h"
 #include <iostream>
 
-queen::queen(bool color) : piece(color)
+queen::queen(bool color) : piece(color, "queen")
 {
 
+}
+
+queen::queen(bool color, bool isKing) : piece(color, "king")
+{
 }
 
 int* queen::move(int* position)

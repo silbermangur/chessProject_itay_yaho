@@ -7,74 +7,78 @@
 #include "pawn.h"
 #include "knight.h"
 
-#define	STARTING_BOARD "rnbkqbnrpppppppp################################PPPPPPPPRNBKQBNR1"
 
 using namespace std;
 
 int findIndex(int& x, int& y)
 {
-	x -= 1;
-	y = SIZE - y;
-	return y * SIZE + x;
+	return y * SIZE + x; 
 }
 
 int main()
 {
-	// string boardArray[SIZE][SIZE] = { "rnbkqbnr", "pppppppp", "########", "########", "########", "########", "PPPPPPPP", "RNBKQBNR",1 };
-	string boardString = STARTING_BOARD; 
+	string boardString = STARTING_BOARD;
 	board b;
-	b.setBoard(boardString);  
-	b.printBoard(); 
-	
-	int x = 8;
-	int y = 7;
-	int f = findIndex(x, y);
-	/*
-	boardString[i] = '+';
 	b.setBoard(boardString);
 	b.printBoard();
-	*/
 
-	int a[4] = {7,7,0,7};
-
-	rook r(true);
-	
-
-	//bishop b2(true);
-
-	//queen q(true);
-
-	//king k(true);
-
-	//pawn p(false);
-
-	//knight n(true);
-	int* arr = r.move(a);
-	
-
-	int i = 0;
-	for (i = 0;i < SIZE;i++) 
+	while (0 == 0)
 	{
-		if (!(arr[i] >= 0 && arr[i] <= 64))
+		int a[4] = { 0,0,0,0 };
+		int* arr;
+		// 
+		cout << "Enter source index: " << endl;
+		cout << "X: ";
+		cin >> a[0];
+		cout << "Y: ";
+		cin >> a[1];
+		cout << "Enter destination index: " << endl;
+		cout << "X: ";
+		cin >> a[2];
+		cout << "Y: ";
+		cin >> a[3];
+
+		int srcIndex = findIndex(a[0], a[1]);
+		int destIndex = findIndex(a[2], a[3]);  
+
+		if (b.getPiece(srcIndex) != nullptr)
 		{
-			break;
+			arr = b.getPiece(srcIndex)->move(a); 
+			for (int i = 1; i < SIZE; i++)
+			{
+				if ((arr[i] >= 0 && arr[i] <= 64))
+				{
+					if ((b.getPiece(arr[i]) == nullptr || ((i < SIZE - 1 && !(arr[i + 1] >= 0 && arr[i + 1] <= 64)) || (i == SIZE))
+						&& b.getPiece(arr[i])->getColor() != b.getPiece(srcIndex)->getColor()) && (b.getPiece(srcIndex)->getType()[0] != 'p' 
+							|| (abs(arr[0] - arr[1]) % 2 == 0 && b.getPiece(arr[1]) == nullptr && (arr[2] < 0 || arr[2] > 64 || b.getPiece(arr[2]) == nullptr))
+							|| (b.getPiece(arr[1]) != nullptr) && arr[0] - arr[1] % 2 != 0))
+					{
+						continue;
+					}
+					else
+					{
+						cout << "Error 2!" << endl;
+					}
+				}
+				else
+				{
+					break;
+				}
+			}
+			b.playMove(srcIndex, destIndex); // piece array
+			// board string
+			boardString[destIndex] = boardString[srcIndex];
+			boardString[srcIndex] = '#';
 		}
+		else
+		{
+			cout << "No piece" << endl;
+			exit(1);
+		}
+		
+		b.setBoard(boardString);
+		b.printBoard();
 	}
-	i -= 1;
-	boardString[arr[i]] = boardString[arr[0]];
-	boardString[arr[0]] = '#';
-	/*
-	for (int i = 0; i < SIZE; i++)
-	{
-		if (arr != NULL  &&  arr[i] >= 0 && arr[i] <= 64)
-		{
-			boardString[arr[i]] = '+';
-		}
-	}	
-	*/
-	b.setBoard(boardString);
-	b.printBoard();
-	
 
 	return 0;
 }
