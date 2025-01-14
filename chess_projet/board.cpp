@@ -48,7 +48,7 @@ board::board() : _board("rnbkqbnrpppppppp################################PPPPPPP
 
 board::~board()
 {
-	for (int i = 0; i < (SIZE * SIZE); i++)
+	for (int i = 0; i < (SIZE_OF_BOARD * SIZE_OF_BOARD); i++)
 	{
 		delete(_boardArray[i]);
 	}
@@ -108,9 +108,9 @@ void board::printBoard()
 	string board = getBoard();
 	int index = 0;
 
-	for (int line = 0; line < SIZE; line++)
+	for (int line = 0; line < SIZE_OF_BOARD; line++)
 	{
-		for (int i = 0; i < SIZE; i++)
+		for (int i = 0; i < SIZE_OF_BOARD; i++)
 		{
 			cout << board[index] << " ";
 			index++;

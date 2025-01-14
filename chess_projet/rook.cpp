@@ -9,8 +9,8 @@ rook::rook(bool color) : piece(color, "rook")
 
 int* rook::move(int* position)
 {
-	int path[SIZE] = {};
-	for (int i = 0; i < SIZE; i++)
+	int path[SIZE_OF_BOARD] = {};
+	for (int i = 0; i < SIZE_OF_BOARD; i++)
 	{
 		path[i] = -1;
 	}
@@ -25,11 +25,11 @@ int* rook::move(int* position)
 			{//runs on all position in path
 				if (position[0] == position[2])
 				{
-					path[i] = SIZE * position[0] + position[1] + (i * postiveMult);
+					path[i] = SIZE_OF_BOARD * position[0] + position[1] + (i * postiveMult);
 				}
 				else 
 				{
-					path[i] = SIZE * (position[0] + (i * postiveMult)) + position[1];
+					path[i] = SIZE_OF_BOARD * (position[0] + (i * postiveMult)) + position[1];
 				}
 			}
 	}

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <math.h>
 
-#define SIZE 8
+#define SIZE_OF_BOARD 8
 
 using namespace std;
 

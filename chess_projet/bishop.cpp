@@ -9,8 +9,8 @@ bishop::bishop(bool color) : piece(color, "bishop")
 
 int* bishop::move(int* position)
 {
-	int path[SIZE] = {};
-	for (int i = 0; i < SIZE; i++)
+	int path[SIZE_OF_BOARD] = {};
+	for (int i = 0; i < SIZE_OF_BOARD; i++)
 	{
 		path[i] = -1;
 	}
@@ -29,7 +29,7 @@ int* bishop::move(int* position)
 		}
 		for (int i = 0; i <= abs(position[0] - position[2]); i++)
 		{
-			path[i] = position[0] + position[1] * SIZE + step * i;
+			path[i] = position[0] + position[1] * SIZE_OF_BOARD + step * i;
 		}
 	}
 

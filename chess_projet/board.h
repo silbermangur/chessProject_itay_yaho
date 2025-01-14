@@ -1,8 +1,7 @@
 #pragma once
 #include "piece.h"
 
-#define	STARTING_BOARD "rnbkqbnrpppppppp################################PPPPPPPPRNBKQBNR1"
-#define SIZE 8 
+#define	STARTING_BOARD "rnbkqbnrpppppppp################################PPPPPPPPRNBKQBNR1" 
 
 class board
 {
@@ -20,6 +19,6 @@ public:
 	void printBoard();
 
 private:
-	piece* _boardArray[SIZE * SIZE];
+	piece* _boardArray[SIZE_OF_BOARD * SIZE_OF_BOARD];
 	string _board;
 };
