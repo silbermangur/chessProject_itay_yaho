@@ -4,15 +4,14 @@ pawn::pawn(bool color) : piece(color, "pawn")
 {
 }
 
-int* pawn::move(int* position)
+void pawn::move(int* position, int* path)
 {
-	int path[SIZE_OF_BOARD] = {};
 	for (int i = 0; i < SIZE_OF_BOARD; i++)
 	{
 		path[i] = -1;
 	}
 	int color = -1;
-	if (!this->getColor())
+	if ((this->getColor()))
 	{
 		color = 1;
 	}
@@ -32,8 +31,8 @@ int* pawn::move(int* position)
 	}
 	else
 	{
-		cout << "Error!" << endl;
+		cout << "Error! (pawn)" << endl;
+		throw 6;
 	}
 	this->setHasMoved();
-    return path;
 }

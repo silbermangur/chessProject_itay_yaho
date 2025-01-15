@@ -7,9 +7,9 @@
 #include "king.h"
 #include "pawn.h"
 
-board::board() : _board("rnbkqbnrpppppppp################################PPPPPPPPRNBKQBNR1")
+board::board() : _board(STARTING_BOARD) 
 {
-	bool color = false;
+	bool color = true;
 	int i = 0;
 	
 	_boardArray[0] = new rook(color);  
@@ -31,7 +31,7 @@ board::board() : _board("rnbkqbnrpppppppp################################PPPPPPP
 		_boardArray[i] = nullptr;
 	}
 
-	color = true;
+	color = false;
 	for (i = 48; i < 56; i++)
 	{
 		_boardArray[i] = new pawn(color);
@@ -71,18 +71,27 @@ piece* board::getPiece(int index)
 
 bool board::getTurn()
 {
-	return _board[64];
-}
-
-void board::setTurn()
-{
-	if (getTurn() == true)
+	if (_board[64] != '0')
 	{
-		_board[64] = 0;
+		return false;
 	}
 	else
 	{
-		_board[64] = 1;
+		return true;
+	}
+}
+
+void board::setTurn(bool &turn)
+{
+	if (turn == true)
+	{
+		this->_board[64] = '0';
+		turn = false;
+	}
+	else
+	{
+		this->_board[64] = '1';
+		turn = true;
 	}
 }
 

@@ -10,9 +10,8 @@ queen::queen(bool color, bool isKing) : piece(color, "king")
 {
 }
 
-int* queen::move(int* position)
+void queen::move(int* position, int* path)
 {
-    int path[SIZE_OF_BOARD] = {};
 	for (int i = 0; i < SIZE_OF_BOARD; i++)
 	{
 		path[i] = -1;
@@ -57,9 +56,7 @@ int* queen::move(int* position)
 	}
 	else
 	{
-		cout << "Error!" << endl;
+		cout << "Error! (queen)" << endl;
+		throw 6;
 	}
-
-
-    return path;
 }

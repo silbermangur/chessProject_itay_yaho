@@ -5,5 +5,5 @@ class bishop : public piece
 {
 public:
 	bishop(bool color);
-	int* move(int* position) override;
+	void move(int* position, int* path) override;
 };

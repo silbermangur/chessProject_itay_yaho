@@ -4,17 +4,15 @@ king::king(bool color) : queen(color, true)
 {
 }
 
-int* king::move(int* position)
+void king::move(int* position, int* path)
 {
     if (abs(position[1] - position[3]) <= 1 && abs(position[0] - position[2]) <= 1)
     {
-        int* path = this->queen::move(position);
-        return path;
+        this->queen::move(position, path);
     }
     else
     {
-        cout << "Error!" << endl;
-    }
-    return NULL;
-    
+        cout << "Error! (king)" << endl;
+        throw 6;
+    }    
 }

@@ -1,7 +1,7 @@
 #pragma once
 #include "piece.h"
 
-#define	STARTING_BOARD "rnbkqbnrpppppppp################################PPPPPPPPRNBKQBNR1" 
+#define	STARTING_BOARD "rnbkqbnrpppppppp################################PPPPPPPPRNBKQBNR0" // 0 - white turn
 
 class board
 {
@@ -12,7 +12,7 @@ public:
 	void setBoard(string board);
 	piece* getPiece(int index);
 	bool getTurn();
-	void setTurn();
+	void setTurn(bool &turn);
 	bool isCheck();
 	void playMove(int src, int dest);
 	bool  getMove();

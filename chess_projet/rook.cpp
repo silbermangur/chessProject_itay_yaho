@@ -7,9 +7,8 @@ rook::rook(bool color) : piece(color, "rook")
 	
 }
 
-int* rook::move(int* position)
+void rook::move(int* position, int* path)
 {
-	int path[SIZE_OF_BOARD] = {};
 	for (int i = 0; i < SIZE_OF_BOARD; i++)
 	{
 		path[i] = -1;
@@ -36,9 +35,7 @@ int* rook::move(int* position)
 	else
 	{
 		// if not - return  error
-		cout << "Error!" << endl;
+		cout << "Error! (rook)" << endl;
+		throw 6;
 	}
-	
-
-	return path;
 }

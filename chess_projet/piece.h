@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 #include <math.h>
+#include "Pipe.h"
+#include <thread>
 
 #define SIZE_OF_BOARD 8
 
@@ -14,7 +16,7 @@ public:
 	bool getColor();
 	bool getHasMoved();
 	void setHasMoved();
-	virtual int* move(int* position)  = 0; 
+	virtual void move(int* position, int* path)  = 0; 
 
 private:
 	string _type;

@@ -6,6 +6,6 @@ class queen : public piece
 public:
 	queen(bool color);
 	queen(bool color, bool isKing);
-	int* move(int* position) override;
+	void move(int* position, int* path) override;
 
 };

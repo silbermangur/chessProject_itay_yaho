@@ -7,9 +7,8 @@ bishop::bishop(bool color) : piece(color, "bishop")
 
 }
 
-int* bishop::move(int* position)
+void bishop::move(int* position, int* path)
 {
-	int path[SIZE_OF_BOARD] = {};
 	for (int i = 0; i < SIZE_OF_BOARD; i++)
 	{
 		path[i] = -1;
@@ -32,7 +31,9 @@ int* bishop::move(int* position)
 			path[i] = position[0] + position[1] * SIZE_OF_BOARD + step * i;
 		}
 	}
-
-	return path;
-
+	else
+	{
+		cout << "Error! (bishop)" << endl;
+		throw 6;
+	}
 }

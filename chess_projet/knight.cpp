@@ -4,9 +4,8 @@ knight::knight(bool color) : piece(color, "knight")
 {
 }
 
-int* knight::move(int* position)
+void knight::move(int* position, int* path)
 {
-	int path[SIZE_OF_BOARD] = {};
 	for (int i = 0; i < SIZE_OF_BOARD; i++)
 	{
 		path[i] = -1;
@@ -19,9 +18,7 @@ int* knight::move(int* position)
 	}
 	else
 	{
-		cout << "Error!" << endl;
+		cout << "Error! (knight)" << endl;
+		throw 6;
 	}
-	
-
-	return path;
 }

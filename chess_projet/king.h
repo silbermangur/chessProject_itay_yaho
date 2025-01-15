@@ -5,6 +5,6 @@ class king : public queen
 {
 public:
 	king(bool color);
-	int* move(int* position) override;
+	void move(int* position, int* path) override;
 };
 

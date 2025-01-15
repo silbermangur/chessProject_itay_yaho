@@ -5,5 +5,5 @@ class knight : public piece
 {
 public:
 	knight(bool color);
-	int* move(int* position) override;
+	void move(int* position, int* path) override;
 };
