@@ -217,6 +217,51 @@ int main()
 						// board string
 						boardString[destIndex] = boardString[srcIndex];
 						boardString[srcIndex] = '#';
+
+						int k = blackKing;
+						if (!(b.getTurn()))
+						{
+							k = whiteKing;
+						}
+						for (int j = 0; j < SIZE_OF_BOARD * SIZE_OF_BOARD; j++)
+						{
+							try
+							{
+								if (b.getPiece(j) != nullptr && b.getPiece(j)->getColor() == b.getTurn())
+								{
+									int path2[SIZE_OF_BOARD] = {};
+									int move2[4] = { j % 8, j / 8, k % 8, k / 8 };
+									bool flag3 = true;
+									b.getPiece(j)->move(move2, path2);
+									if (b.getPiece(j)->getType() == "pawn" && (move2[0] - move2[2]) % 2 == 0)
+									{
+										throw 2;
+									}
+									for (int index = 1; index < SIZE_OF_BOARD; index++)
+									{
+										if (path2[index] != -1 && path2[index] != k)
+										{
+											if ((b.getPiece(path2[index]) != nullptr && path2[index] != srcIndex2) || (path2[index] == destIndex2) && b.getPiece(srcIndex2)->getType() != "king")
+											{
+												flag3 = false;
+											}
+										}
+									}
+									if (!flag3)
+									{
+										throw 2;
+									}
+									throw 0;
+								}
+							}
+							catch (int e2)
+							{
+								if (e2 == 0)
+								{
+									throw 1; // move check
+								}
+							}
+						}
 						throw 0;
 					}
 					catch (int e)
