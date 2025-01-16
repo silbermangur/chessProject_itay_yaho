@@ -34,8 +34,6 @@ void rook::move(int* position, int* path)
 	}
 	else
 	{
-		// if not - return  error
-		cout << "Error! (rook)" << endl;
 		throw 6;
 	}
 }

@@ -61,7 +61,7 @@ string board::getBoard()
 
 void board::setBoard(string board)
 {
-	_board = board; 
+	_board = board;
 }
 
 piece* board::getPiece(int index)
@@ -71,7 +71,7 @@ piece* board::getPiece(int index)
 
 bool board::getTurn()
 {
-	if (_board[64] != '0')
+	if (_board[64] != 48)
 	{
 		return false;
 	}

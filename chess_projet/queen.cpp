@@ -33,7 +33,6 @@ void queen::move(int* position, int* path)
 			{
 				path[i] = SIZE_OF_BOARD * (position[1] + (i * postiveMult)) + position[0];
 			}
-			cout << path[i] << endl;
 		}
 	}
 	else if (abs(position[0] - position[2]) == abs(position[1] - position[3]) && position[0] != position[2])
@@ -51,12 +50,10 @@ void queen::move(int* position, int* path)
 		for (int i = 0; i <= abs(position[0] - position[2]); i++)
 		{
 			path[i] = position[0] + position[1] * SIZE_OF_BOARD + step * i;
-			cout << path[i] << endl;
 		}
 	}
 	else
 	{
-		cout << "Error! (queen)" << endl;
 		throw 6;
 	}
 }

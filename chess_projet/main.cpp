@@ -83,7 +83,7 @@ int main()
 			int destIndex2 = ((SIZE_OF_BOARD - (destIndex / SIZE_OF_BOARD) - 1)* SIZE_OF_BOARD + destIndex % SIZE_OF_BOARD);
 			int arr[SIZE_OF_BOARD] = {-1, -1, -1, -1, -1, -1, -1, -1};
 			int whiteKing = 3;
-			int blackKing = 60;
+			int blackKing = 59;
 			
 			if (b.getPiece(srcIndex2) != nullptr)
 			{
@@ -143,7 +143,54 @@ int main()
 										throw 6;
 									}
 								}
-
+								int k = blackKing;
+								if (b.getTurn())
+								{
+									k = whiteKing;
+								}
+								if (b.getPiece(srcIndex2)->getType() == "king")
+								{
+									k = destIndex2;
+								}
+								for (int j = 0; j < SIZE_OF_BOARD * SIZE_OF_BOARD; j++)
+								{
+									try
+									{
+										if (b.getPiece(j) != nullptr && b.getPiece(j)->getColor() != b.getTurn() && j != destIndex2)
+										{
+											int path[SIZE_OF_BOARD] = {};
+											int move[4] = { j % 8, j / 8, k % 8, k / 8 };
+											bool flag2 = true;
+											b.getPiece(j)->move(move, path);
+											if (b.getPiece(j)->getType() == "pawn" && (move[0] - move[2]) % 2 == 0)
+											{
+												throw 2;
+											}
+											for (int index = 1; index < SIZE_OF_BOARD; index++)
+											{
+												if (path[index] != -1 && path[index] != k)
+												{
+													if ((b.getPiece(path[index]) != nullptr && path[index] != srcIndex2) || (path[index] == destIndex2) && b.getPiece(srcIndex2)->getType() != "king")
+													{
+														flag2 = false;
+													}
+												}
+											}
+											if (!flag2)
+											{
+												throw 2;
+											}
+											throw 0;
+										}
+									}
+									catch (int e2)
+									{
+										if (e2 == 0)
+										{
+											throw 3;
+										}
+									}
+								}
 								if (flag)
 								{
 									cout << "Error 2!" << endl;
@@ -177,6 +224,14 @@ int main()
 						if (e == 0 || e == 1)
 						{
 							b.setTurn(turn);
+							if (turn)
+							{
+								boardString[64] = '1';
+							}
+							else
+							{
+								boardString[64] = '0';
+							}
 						}
 						msgToGraphics[0] = '0' + e;
 						msgToGraphics[1] = 0;

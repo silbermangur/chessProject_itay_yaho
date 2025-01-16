@@ -18,7 +18,6 @@ void knight::move(int* position, int* path)
 	}
 	else
 	{
-		cout << "Error! (knight)" << endl;
 		throw 6;
 	}
 }

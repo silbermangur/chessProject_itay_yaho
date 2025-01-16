@@ -31,7 +31,6 @@ void pawn::move(int* position, int* path)
 	}
 	else
 	{
-		cout << "Error! (pawn)" << endl;
 		throw 6;
 	}
 	this->setHasMoved();

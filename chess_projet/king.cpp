@@ -12,7 +12,6 @@ void king::move(int* position, int* path)
     }
     else
     {
-        cout << "Error! (king)" << endl;
         throw 6;
     }    
 }

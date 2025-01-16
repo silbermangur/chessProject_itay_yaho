@@ -33,7 +33,6 @@ void bishop::move(int* position, int* path)
 	}
 	else
 	{
-		cout << "Error! (bishop)" << endl;
 		throw 6;
 	}
 }
