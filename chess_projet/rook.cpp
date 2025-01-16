@@ -22,13 +22,13 @@ void rook::move(int* position, int* path)
 
 			for (int i = 0; i <= distance; i++) 
 			{//runs on all position in path
-				if (position[0] == position[2])
+				if (!(position[0] == position[2]))
 				{
-					path[i] = SIZE_OF_BOARD * position[0] + position[1] + (i * postiveMult);
+					path[i] = SIZE_OF_BOARD * position[1] + position[0] + (i * postiveMult);
 				}
 				else 
 				{
-					path[i] = SIZE_OF_BOARD * (position[0] + (i * postiveMult)) + position[1];
+					path[i] = SIZE_OF_BOARD * (position[1] + (i * postiveMult)) + position[0];
 				}
 			}
 	}

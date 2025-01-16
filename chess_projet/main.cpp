@@ -82,6 +82,8 @@ int main()
 			int srcIndex2 = ((SIZE_OF_BOARD - (srcIndex / SIZE_OF_BOARD) - 1) * SIZE_OF_BOARD + srcIndex % SIZE_OF_BOARD); 
 			int destIndex2 = ((SIZE_OF_BOARD - (destIndex / SIZE_OF_BOARD) - 1)* SIZE_OF_BOARD + destIndex % SIZE_OF_BOARD);
 			int arr[SIZE_OF_BOARD] = {-1, -1, -1, -1, -1, -1, -1, -1};
+			int whiteKing = 3;
+			int blackKing = 60;
 			
 			if (b.getPiece(srcIndex2) != nullptr)
 			{
@@ -119,7 +121,7 @@ int main()
 								}
 								else
 								{
-									if (i == SIZE_OF_BOARD || arr[i + 1] == NULL)
+									if (i == SIZE_OF_BOARD || arr[i + 1] == -1)
 									{
 										if (b.getPiece(srcIndex2)->getColor() == b.getPiece(destIndex2)->getColor())
 										{
@@ -141,6 +143,7 @@ int main()
 										throw 6;
 									}
 								}
+
 								if (flag)
 								{
 									cout << "Error 2!" << endl;
@@ -150,6 +153,17 @@ int main()
 							else
 							{
 								break;
+							}
+						}
+						if (b.getPiece(srcIndex2)->getType() == "king")
+						{
+							if (b.getTurn())
+							{
+								whiteKing = destIndex2;
+							}
+							else
+							{
+								blackKing = destIndex2;
 							}
 						}
 						b.playMove(srcIndex2, destIndex2); // piece array

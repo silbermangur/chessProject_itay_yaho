@@ -14,7 +14,7 @@ void bishop::move(int* position, int* path)
 		path[i] = -1;
 	}
 
-	if (position[0] - position[2] == position[1] - position[3]  && position[0] != position[2])
+	if (abs(position[0] - position[2]) == abs(position[1] - position[3]) && position[0] != position[2])
 	{
 		int step = -9;
 		

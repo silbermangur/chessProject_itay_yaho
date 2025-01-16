@@ -102,6 +102,10 @@ bool board::isCheck()
 
 void board::playMove(int src, int dest)
 {
+	if (_boardArray[dest] != nullptr)
+	{
+		delete(_boardArray[dest]);
+	}
 	_boardArray[dest] = _boardArray[src];
 	_boardArray[src] = nullptr;
 	
